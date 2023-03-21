@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer {
+  :root {
+    --background: #282a36;
+    --background-darker: #1d1e26;
+    --background-lighter: #383a59;
+    --current-line: #44475a;
+    --foreground: #f8f8f2;
+    --comment: #6272a4;
+    --cyan: #8be9fd;
+    --green: #50fa7b;
+    --green-darker: #48d06d;
+    --orange: #ffb86c;
+    --pink: #ff79c6;
+    --purple: #bd93f9;
+    --red: #f55;
+    --yellow: #f1fa8c;
+    --fg: #fff;
+    --gray: #999;
+    --gray-darker: #888;
+    --content: #ccc;
+    --ui-gray: #3f3f3f;
+    --white: #fff;
+    --premium: #893bfe;
+    --premium-dark: #7e28fe;
+  }
+
+  .bg-code {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: radial-gradient(
+      circle at 100%,
+      var(--cyan) 0%,
+      var(--orange) 40%,
+      var(--pink) 60%,
+      var(--green) 80%,
+      var(--purple) 100%
+    );
+    background-image: radial-gradient(ellipse at top, var(--cyan), var(--purple)),
+      radial-gradient(ellipse at bottom, var(--orange), var(--green));
+    background-image: radial-gradient(circle at 100%, var(--purple) 0%, var(--cyan) 100%);
+    -webkit-filter: blur(80px);
+    filter: blur(80px);
+    opacity: 0.5;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-zinc-50 dark:bg-zinc-900 m-2;
+  }
+
+  ::-webkit-scrollbar-button,
+  ::-webkit-scrollbar-corner {
+    display: none;
+  }
+
+  html::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-resizer {
+    display: none;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    min-height: 5px;
+    min-width: 5px;
+    @apply bg-zinc-400 dark:bg-zinc-700 dark:hover:bg-zinc-500 duration-100 transition-colors dark:border-zinc-800 border-4 border-zinc-400 rounded-sm bg-clip-padding;
+    padding-left: 1px;
+  }
+}
