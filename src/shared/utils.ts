@@ -1,0 +1,32 @@
+import { PluggableList } from 'unified';
+import { rehype } from 'rehype';
+import rehypePrism from 'rehype-prism-plus';
+
+
+// Converta o tema para CSS
+export const processHtml = (html: string, plugins: PluggableList = [[rehypePrism, { ignoreMissing: true, showLineNumbers: true }]]) => {
+  return rehype()
+    .data('settings', { fragment: true })
+    .use([...plugins])
+    .processSync(`${html}`)
+    .toString();
+};
+
+export function htmlEncode(sHtml: string) {
+  return sHtml
+    .replace(/```(tsx?|jsx?|html|xml)(.*)\s+([\s\S]*?)(\s.+)?```/g, (str: string) => {
+      return str.replace(
+        /[<&"]/g,
+        (c: string) => (({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' } as Record<string, string>)[c]),
+      );
+    })
+    .replace(
+      /[<&"]/g,
+      (c: string) => (({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;' } as Record<string, string>)[c]),
+    );
+}
+
+export function stopPropagation(e: React.KeyboardEvent<HTMLTextAreaElement>) {
+  e.stopPropagation();
+  e.preventDefault();
+}
