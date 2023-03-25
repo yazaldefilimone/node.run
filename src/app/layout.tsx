@@ -4,6 +4,7 @@ import { ThemeContainer } from '~/ui/components/theme-container';
 import { Inter } from 'next/font/google';
 import { cn } from '~/shared/en';
 import { Background } from '~/ui/components/background';
+import { ToastWrapper } from '~/ui/components/toast-wrapper';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={cn(inter.className)}>
         <ThemeContainer>
           <Background>{children}</Background>
+          <ToastWrapper />
         </ThemeContainer>
       </body>
     </html>
