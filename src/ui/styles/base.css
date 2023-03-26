@@ -105,6 +105,3 @@ code {
   width: 1rem;
   @apply text-zinc-400;
 } */
-textarea {
-  margin-right: 0.75rem;
-}
